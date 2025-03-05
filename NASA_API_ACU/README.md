@@ -1,41 +1,52 @@
-# Nasa_App (nasa-api-acu)
+# Imágenes Random de la NASA
 
-Nasa_Api_App
+Este proyecto muestra imágenes aleatorias de la NASA utilizando la API Astronomy Picture of the Day (APOD).
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+## Tecnologías Utilizadas
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+- Vue.js
+- API de la NASA (APOD)
+- CSS con efectos de Glassmorphism
 
+## Instalación y Uso
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+1. Clona este repositorio:
+   ```sh
+   git clone https://github.com/tu_usuario/nasa-images.git
+   ```
+2. Navega al directorio del proyecto:
+   ```sh
+   cd nasa-images
+   ```
+3. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+4. Ejecuta el proyecto:
+   ```sh
+   npm run serve
+   ```
 
+## Características
 
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
+- Muestra imágenes que la Nasa hace disponible: Imágenes por día, Imágenes por fechas e Imágenes random.
+- Estructura: Cartas con imágenes, fecha, descripción y autor.
+- Diseño moderno con Glassmorphism.
+- Efectos interactivos al pasar el mouse sobre las tarjetas.
 
+## Captura de Pantalla
 
+![alt text](image.png)
 
-### Build the app for production
-```bash
-quasar build
-```
+## API Key de la NASA
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Para obtener imágenes, necesitas una API Key de la NASA. Puedes obtener una en:
+[NASA API](https://api.nasa.gov/)
+
+## Autor
+
+**Nombre** - [GitHub](https://github.com/AcuLuis)
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT.
