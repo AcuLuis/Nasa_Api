@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1 class="titulo">IMÁGENES RANDOM DE LA NASA</h1>
+    <h1 class="titulo">IMÁGEN DEL DÍA</h1>
     <div v-if="apodData.length" class="card-container">
-      <div v-for="item in apodData" :key="item.date" class="card">
+      <div v-for="(item, index) in apodData" :key="index" class="card">
         <img :src="item.url" :alt="item.title" class="card-image" />
         <div class="card-content">
           <h2 class="card-title">{{ item.title }}</h2>
@@ -36,6 +36,7 @@
   font-weight: bold;
   text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
   margin-bottom: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 /* Contenedor de tarjetas */
@@ -48,7 +49,7 @@
 
 /* Tarjetas */
 .card {
-  width: 400px;
+  width: 640px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -65,27 +66,27 @@
 /* Imagen de la tarjeta */
 .card-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   border-radius: 12px 12px 0 0;
 }
 
 /* Contenido de la tarjeta */
 .card-content {
-  padding: 15px;
+  padding: 20px;
   text-align: left;
 }
 
 .card-title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 8px;
   font-weight: bold;
   color: #fff;
 }
 
 .card-date {
-  font-size: 0.9rem;
-  color: #f0f0f0;
+  font-size: 1rem;
+  color: #ffcc00;
   margin-bottom: 5px;
 }
 
@@ -109,9 +110,9 @@ import axios from "axios";
 
 export default {
   props: {
-    count: {
-      type: Number,
-      required: true,
+    start: {
+      type: String,
+      default: null,
     },
   },
   data() {
@@ -119,22 +120,31 @@ export default {
       apodData: [],
     };
   },
-  async created() {
-    await this.fetchRandomApodData();
+  mounted() {
+    this.fetchApodData();
   },
   methods: {
-    async fetchRandomApodData() {
+    async fetchApodData() {
       try {
+        const params = {
+          api_key: "VeA5s85uQGj2NSlcPd2pvNaZ0uOTg1AifAb6FmqW",
+        };
+
+        if (this.start && this.end) {
+          params.start_date = this.start;
+          params.end_date = this.start;
+        }
+
         const response = await axios.get(
           "https://api.nasa.gov/planetary/apod",
-          {
-            params: {
-              api_key: "VeA5s85uQGj2NSlcPd2pvNaZ0uOTg1AifAb6FmqW",
-              count: this.count,
-            },
-          }
+          { params }
         );
-        this.apodData = response.data;
+
+        if (Array.isArray(response.data)) {
+          this.apodData = response.data;
+        } else {
+          this.apodData = [response.data];
+        }
       } catch (error) {
         console.error(error);
       }
