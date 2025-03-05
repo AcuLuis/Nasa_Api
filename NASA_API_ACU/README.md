@@ -1,6 +1,6 @@
-# Imágenes Random de la NASA
+# Imágenes de la NASA
 
-Este proyecto muestra imágenes aleatorias de la NASA utilizando la API Astronomy Picture of the Day (APOD).
+Este proyecto muestra imágenes de la NASA utilizando la API Astronomy Picture of the Day (APOD).
 
 ## Tecnologías Utilizadas
 
